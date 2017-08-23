@@ -26,7 +26,8 @@ public class AppConfig {
         return NumberFormat.getCurrencyInstance();
     }
 
-    @Bean @Scope("prototype")   // "prototype" changes default instantiation from Singleton beans
+    @Bean
+//    @Scope("prototype")   // "prototype" changes default instantiation from Singleton beans
     public Game game() {
         BaseballGame baseballGame = new BaseballGame(teams.get(0), teams.get(1));
         baseballGame.setDataSource(dataSource);
