@@ -57,8 +57,8 @@ public class BaseballGame implements Game {
             getAwayTeam().getName();
     }
 
-//    @Override
-//    public String toString() {
-//        return String.format("Game between %s at %s", awayTeam.getName(), homeTeam.getName());
-//    }
+    @Override
+    public String toString() {
+        return String.format("Game between %s at %s", awayTeam.getName(), homeTeam.getName());
+    }
 }
