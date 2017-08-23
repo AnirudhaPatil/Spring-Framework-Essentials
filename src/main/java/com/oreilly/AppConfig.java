@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import javax.sql.DataSource;
+import java.text.NumberFormat;
 import java.util.List;
 
 @Configuration
@@ -19,6 +20,11 @@ public class AppConfig {
 
     @Autowired
     private List<Team> teams;   // Autowire all Components that implement Team and insert into List
+
+    @Bean
+    public NumberFormat nf() {
+        return NumberFormat.getCurrencyInstance();
+    }
 
     @Bean @Scope("prototype")   // "prototype" changes default instantiation from Singleton beans
     public Game game() {
