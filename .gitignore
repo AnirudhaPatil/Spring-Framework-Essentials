@@ -1,0 +1,8 @@
+# directories to ignore
+gradle/
+build/
+
+
+# other files and directories
+.idea/
+.DS_Store
