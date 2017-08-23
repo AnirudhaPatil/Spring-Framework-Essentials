@@ -2,12 +2,12 @@ package com.oreilly;
 
 import com.oreilly.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @Configuration
 @ComponentScan(basePackages = "com.oreilly")
@@ -16,27 +16,14 @@ public class AppConfig {
     @Autowired
     private DataSource dataSource;
 
-    @Autowired @Qualifier("redSox")
-    private Team home;
-
-    @Autowired @Qualifier("cubs")
-    private Team away;
+    @Autowired
+    private List<Team> teams;   // Autowire all Components that implement Team and insert into List
 
     @Bean
     public Game game() {
-        BaseballGame baseballGame = new BaseballGame(home, home);
+        BaseballGame baseballGame = new BaseballGame(teams.get(0), teams.get(1));
         baseballGame.setDataSource(dataSource);
 
         return baseballGame;
     }
-
-//    @Bean
-//    public Team redSox() {
-//        return new RedSox();
-//    }
-//
-//    @Bean
-//    public Team cubs() {
-//        return new Cubs();
-//    }
 }
